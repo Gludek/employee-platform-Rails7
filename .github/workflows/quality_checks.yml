@@ -61,7 +61,7 @@ jobs:
     - name: Setup test database
       env:
         PGHOST: localhost
-        PGUSER: postgres
+        PGUSER: project
         RAILS_ENV: test
       run: |
         bin/rails db:create db:schema:load db:migrate
