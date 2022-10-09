@@ -87,4 +87,4 @@ group :test do
   gem 'webdrivers'
 end
 
-gem "bulma-rails", "~> 0.9.3"
+gem 'bulma-rails', '~> 0.9.3'
