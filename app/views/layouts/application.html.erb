@@ -11,6 +11,65 @@
   </head>
 
   <body>
-    <%= yield %>
+  <nav class='navbar is-fixed-top is-primary is-light has-shadow'>
+    <div class='navbar-brand'>
+      <%= link_to 'Company', root_path, class: 'navbar-item' %>
+    </div>
+    <div class='navbar-menu'>
+      <div class='navbar-start'>
+        <p class="buttons">
+          <a class="button is-primary is-small" href='https://github.com/Gludek/employee-platform-Rails7' >
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+            <span>GitHub</span>
+          </a>
+      </div>
+      <div class='navbar-end'>
+        <% if employee_signed_in? %>
+<!--              <span class='navbar-item info has-background-primary-dark has-text-centered my-0 py-0 is-flex is-align-content-space-evenly'>-->
+<!--                <div class=' kudo-container is-flex is-flex-direction-row is-justify-content-space-around is-align-items-center'>-->
+<!--                  <p>Current points<br>-->
+                    <%#= current_employee.points %>
+<!--                  </p>-->
+                  <%#= inline_svg_tag('kudo.svg', class: 'kudo') %>
+<!--                </div>-->
+<!--                <div>-->
+<!--                  Avaible Kudos<br>-->
+                  <%#= current_employee.number_of_available_kudos  %>
+<!--                </div>-->
+<!--              </span>-->
+<!--          <div class="navbar-item has-dropdown is-hoverable">-->
+            <%#= link_to "Pages", root_path, class: "navbar-link"%>
+<!--            <div class="navbar-dropdown">-->
+              <%#= link_to "Kudos", kudos_path, class: "navbar-item"%>
+              <%#= link_to "Rewards", rewards_path, class: "navbar-item"%>
+              <%#= link_to "Orders", orders_employee_path(current_employee.id), class: "navbar-item"%>
+              <%#= link_to "My Profile", employee_path(current_employee), class: "navbar-item"%>
+<!--            </div>-->
+<!--          </div>-->
+          <%= link_to 'Sign out', destroy_employee_session_path, data: {turbo_method: :delete}, class:'is-link navbar-item' %>
+        <% else %>
+          <%= link_to 'Sign in', new_employee_session_path, class:'navbar-item' %>
+          <%= link_to 'Sign up', new_employee_registration_path, class:'navbar-item' %>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+  <% if notice %>
+    <p class=" notification notice"><%= notice %></p>
+  <% elsif alert%>
+    <p class="notification alert is-warning"><%= alert %></p>
+  <% end %>
+  <section class="section">
+    <div class="content">
+      <div class="container is-max-desktop">
+        <div class='box'>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </section>
   </body>
 </html>
+
